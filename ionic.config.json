@@ -1,0 +1,7 @@
+{
+  "name": "workout-assistant",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
