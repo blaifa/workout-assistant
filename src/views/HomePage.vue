@@ -1,56 +1,58 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
-    </ion-content>
+    <ion-row>
+      <ion-button :color="state.color" size="large" @click="goToTrainingSet"
+        >TRAINING SET<ion-ripple-effect></ion-ripple-effect
+      ></ion-button>
+      <ion-button :color="state.color" size="large">WEEK PLAN</ion-button>
+      <ion-button :color="state.color" size="large">WEEK PLAN</ion-button>
+    </ion-row>
+    <ion-row>
+      <ion-button color="dark" size="large"
+        ><ion-icon :icon="barbellOutline"></ion-icon
+      ></ion-button>
+    </ion-row>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import {
+  IonPage,
+  IonButton,
+  IonRow,
+  IonIcon,
+  useIonRouter,
+  IonRippleEffect,
+} from "@ionic/vue";
+import { reactive } from "vue";
+import { barbellOutline } from "ionicons/icons";
+
+const state = reactive({
+  color: "warning",
+});
+const ionRouter = useIonRouter();
+
+function goToTrainingSet() {
+  ionRouter.navigate("/TrainingSet", "forward", "replace");
+  state.color = "white";
+}
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-button {
+  font-size: 36px;
+  font-weight: bold;
+  width: 100%;
+}
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid #ddd;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.rectangle {
+  width: 300px;
+  height: 150px;
 }
 </style>
