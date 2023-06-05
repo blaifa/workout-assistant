@@ -26,7 +26,7 @@
     {{ userCreds.password }}
 
     <div class="d-grid gap-2">
-      <button type="submit" class="btn btn-warning" @click="submitAuth">
+      <button type="submit" class="btn btn-warning" @vue:click="submitAuth">
         LOG IN
       </button>
     </div>
